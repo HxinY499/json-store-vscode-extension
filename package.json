@@ -2,12 +2,18 @@
   "name": "json-store",
   "displayName": "JSON Store",
   "description": "还在网站中美化JSON吗？试试这个插件吧。不需要在工作目录中手动创建JSON文件，点击按钮即可创建，使用VSCode美化JSON吧",
-  "version": "0.0.1",
+  "version": "0.0.3",
+  "publisher": "HeXinyu",
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HxinY499/json-store-vscode-extension.git"
+  },
   "engines": {
     "vscode": "^1.100.0"
   },
   "categories": [
-    "Other"
+    "Extension Packs"
   ],
   "activationEvents": [],
   "main": "./out/extension.js",

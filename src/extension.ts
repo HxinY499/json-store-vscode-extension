@@ -3,10 +3,12 @@
 import vscode from "vscode";
 
 import { FileExplorerProvider } from "./treeview";
+import { DragDropController } from "./treeview/drag-drop-controller";
 import {
   addFileOrFolder,
   cloudDownload,
   deleteFileOrFolder,
+  openInExplorer,
   renameFileOrFolder,
   saveToStore,
 } from "./utils/core-logic";
@@ -40,11 +42,14 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
 
+  const dragAndDropController = new DragDropController(fileExplorerProvider);
+
   // Register the tree view
   const treeView = vscode.window.createTreeView("json-store-view", {
     treeDataProvider: fileExplorerProvider,
     showCollapseAll: true,
     canSelectMany: true,
+    dragAndDropController,
   });
 
   const getItemFromSelection = (item?: vscode.TreeItem | null) => {
@@ -151,6 +156,13 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
 
+  const openInExplorerCommand = vscode.commands.registerCommand(
+    "json-store.openInExplorer",
+    async () => {
+      await openInExplorer();
+    }
+  );
+
   // Add to subscriptions
   context.subscriptions.push(
     treeView,
@@ -162,7 +174,8 @@ export function activate(context: vscode.ExtensionContext) {
     saveToStoreCommand,
     saveToStoreAndDeleteSourceCommand,
     configurationChangeListener,
-    cloudDownloadCommand
+    cloudDownloadCommand,
+    openInExplorerCommand
   );
 }
 

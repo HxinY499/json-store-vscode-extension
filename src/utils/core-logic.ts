@@ -123,7 +123,7 @@ export async function saveToStore(
     // 获取当前活动的编辑器
     const activeEditor = vscode.window.activeTextEditor;
     if (!activeEditor) {
-      vscode.window.showWarningMessage("没有打开的JSON文件");
+      vscode.window.showWarningMessage("No JSON file is open");
       return;
     }
 
@@ -132,7 +132,9 @@ export async function saveToStore(
 
     // 检查是否是JSON文件
     if (!fileUri.fsPath.endsWith(".json")) {
-      vscode.window.showWarningMessage("只能保存JSON文件到JSON Store");
+      vscode.window.showWarningMessage(
+        "Only JSON files can be saved to JSON Store"
+      );
       return;
     }
 
@@ -161,10 +163,10 @@ export async function saveToStore(
     }
 
     vscode.window.showInformationMessage(
-      `✅ 文件 "${fileName}" 已成功保存到 JSON Store`
+      `✅ File "${fileName}" has been successfully saved to JSON Store`
     );
   } catch (error) {
-    vscode.window.showErrorMessage(`保存到JSON Store失败: ${error}`);
+    vscode.window.showErrorMessage(`Failed to save to JSON Store: ${error}`);
   }
 }
 
@@ -187,6 +189,38 @@ export async function cloudDownload() {
       JSON.stringify(data, null, 2)
     );
   } catch (error) {
-    vscode.window.showErrorMessage(`下载失败: ${error}`);
+    vscode.window.showErrorMessage(`Failed to download: ${error}`);
+  }
+}
+
+export async function moveFileOrFolder(
+  sourceUri: vscode.Uri,
+  targetPath: string
+): Promise<void> {
+  const fileName = path.basename(sourceUri.fsPath);
+  const destinationUri = vscode.Uri.file(path.join(targetPath, fileName));
+
+  try {
+    await vscode.workspace.fs.rename(sourceUri, destinationUri);
+  } catch (error) {
+    throw new Error(`Failed to move file: ${error}`);
+  }
+}
+
+export async function openInExplorer() {
+  try {
+    const basePath = getBasePath();
+
+    // 确保目录存在
+    try {
+      await fs.promises.access(basePath);
+    } catch {
+      await fs.promises.mkdir(basePath, { recursive: true });
+    }
+
+    const uri = vscode.Uri.file(basePath);
+    await vscode.env.openExternal(uri);
+  } catch (error) {
+    vscode.window.showErrorMessage(`Failed to open in explorer: ${error}`);
   }
 }

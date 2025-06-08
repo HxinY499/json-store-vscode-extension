@@ -25,6 +25,16 @@ JSON Store 是一个专为 VSCode 设计的 JSON 文件管理插件，让您无�
 3. 搜索 "JSON Store"
 4. 点击安装
 
+## 功能介绍
+
+1. JSON Store 面板是一个简化版的“资源管理器”
+   ![](/images/show1.png)
+
+2. 从云端下载 JSON 文件到 JSON Store
+   ![](/images/cloud.gif)
+3. 将文件添加到 JSON Store，JSON 文件右上角下拉菜单里可以将文件直接复制到 JSON Store 里
+   ![](/images/show2.png)
+
 ## ⚙️ 配置选项
 
 ### 自定义存储路径

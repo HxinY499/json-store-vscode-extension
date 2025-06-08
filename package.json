@@ -5,6 +5,7 @@
   "version": "0.0.7",
   "publisher": "HeXinyu",
   "icon": "images/icon.png",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/HxinY499/json-store-vscode-extension.git"

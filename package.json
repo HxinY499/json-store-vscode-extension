@@ -2,7 +2,7 @@
   "name": "json-store",
   "displayName": "JSON Store",
   "description": "还在网站中美化JSON吗？试试这个插件吧。不需要在工作目录中手动创建JSON文件，点击按钮即可创建，使用VSCode美化JSON吧",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "publisher": "HeXinyu",
   "icon": "images/icon.png",
   "license": "MIT",
@@ -41,7 +41,7 @@
         "icon": "$(trash)"
       },
       {
-        "command": "json-store.renameItem",
+        "command": "json-store.rename",
         "title": "重命名",
         "icon": "$(edit)"
       },
@@ -112,7 +112,7 @@
       ],
       "view/item/context": [
         {
-          "command": "json-store.renameItem",
+          "command": "json-store.rename",
           "when": "view == json-store-view && (viewItem == file || viewItem == folder)"
         },
         {
@@ -157,12 +157,12 @@
     },
     "keybindings": [
       {
-        "command": "json-store.renameItem",
+        "command": "json-store.rename",
         "key": "F2",
         "when": "focusedView == json-store-view && !inputFocus"
       },
       {
-        "command": "json-store.renameItem",
+        "command": "json-store.rename",
         "key": "Enter",
         "when": "focusedView == json-store-view && !inputFocus"
       }

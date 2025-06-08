@@ -72,11 +72,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   const addFileCommand = vscode.commands.registerCommand(
     "json-store.addFile",
-    async (_item: vscode.TreeItem | null) => {
-      const item = getItemFromSelection(_item);
-      if (!item) {
-        return;
-      }
+    async (item: vscode.TreeItem | null) => {
       const isFolder = item?.contextValue === "folder";
       await addFileOrFolder(
         "file",
@@ -88,11 +84,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   const addFolderCommand = vscode.commands.registerCommand(
     "json-store.addFolder",
-    async (_item?: vscode.TreeItem) => {
-      const item = getItemFromSelection(_item);
-      if (!item) {
-        return;
-      }
+    async (item?: vscode.TreeItem) => {
       const isFolder = item?.contextValue === "folder";
       await addFileOrFolder(
         "folder",
@@ -115,7 +107,7 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   const renameFileCommand = vscode.commands.registerCommand(
-    "json-store.renameItem",
+    "json-store.rename",
     async (_item?: vscode.TreeItem) => {
       const item = getItemFromSelection(_item);
       if (!item) {

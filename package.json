@@ -2,7 +2,7 @@
   "name": "json-store",
   "displayName": "JSON Store",
   "description": "还在网站中美化JSON吗？试试这个插件吧。不需要在工作目录中手动创建JSON文件，点击按钮即可创建，使用VSCode美化JSON吧",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "publisher": "HeXinyu",
   "icon": "images/icon.png",
   "repository": {
@@ -189,10 +189,9 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.30.1"
-  },
-  "dependencies": {
+    "typescript-eslint": "^8.30.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-unused-imports": "^4.1.4"
-  }
+  },
+  "dependencies": {}
 }
